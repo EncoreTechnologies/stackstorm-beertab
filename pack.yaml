@@ -1,0 +1,11 @@
+---
+ref: beertab
+name: beertab
+description: StackStorm pack for keeping track of people who owe you beer.
+keywords: 
+    - beer
+    - tab
+    - fun
+version: 0.1.0
+author: Encore Technologies
+email: code@encore.tech
