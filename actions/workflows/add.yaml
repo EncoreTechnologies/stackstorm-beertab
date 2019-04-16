@@ -16,4 +16,4 @@ tasks:
           - beertab: "{{ result() }}"
 
 output:
-  beertab: "{{ ctx().beertab }}"
+  - beertab: "{{ ctx().beertab }}"
