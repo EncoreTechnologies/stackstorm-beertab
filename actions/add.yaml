@@ -1,0 +1,15 @@
+---
+description: "Adds a beer to your tab"
+enabled: true
+entry_point: workflows/logs.yaml
+pack: beertab
+name: add
+runner_type: "orquesta"
+parameters:
+  person:
+    type: string
+    description: "Person who owes you a beer"
+  user:
+    type: string
+    description: "Number of logs to pull"
+    default: "{{ action_context.api_user }}"

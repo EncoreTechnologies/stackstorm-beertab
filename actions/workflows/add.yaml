@@ -1,0 +1,18 @@
+version: 1.0
+
+input:
+  - person
+  - user
+
+tasks:
+  get_tab:
+    action: st2.kv_get
+    input:
+      key: "system.beertab.{{ ctx().user }}"
+    next:
+      - when: "{{ succeeded() }}"
+        publish:
+          - beertab: "{{ result() }}"
+
+output:
+  beertab: "{{ ctx().beertab }}"
