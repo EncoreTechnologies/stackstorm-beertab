@@ -1,7 +1,7 @@
 ---
 description: "Adds a beer to your tab"
 enabled: true
-entry_point: workflows/logs.yaml
+entry_point: workflows/add.yaml
 pack: beertab
 name: add
 runner_type: "orquesta"
