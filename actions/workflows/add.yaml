@@ -3,10 +3,11 @@ version: 1.0
 input:
   - person
   - user
+  - beertab: null
 
 tasks:
   get_tab:
-    action: st2.kv_get
+    action: st2.kv.get
     input:
       key: "system.beertab.{{ ctx().user }}"
     next:
