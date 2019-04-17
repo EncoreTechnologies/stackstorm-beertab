@@ -12,7 +12,7 @@ ack:
     format: "Standby, going through everyones tab to find the drinks that are rightfully yours."
 result:
     format: |
-        {% if excution.status == 'succeeded' %}
+        {% if execution.status == 'succeeded' %}
         Here are all if the people who owe you a beer:
         ```
         {{ execution.result.output.beer_debt | to_yaml_string }}```
