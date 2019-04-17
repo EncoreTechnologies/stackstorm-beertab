@@ -9,7 +9,7 @@ ack:
     format: "One sec while I find their tab!"
 result:
     format: |
-        {% if excution.status == 'succeeded' %}
+        {% if execution.status == 'succeeded' %}
         Here is the tab for {{ execution.parameters.owner }} that you asked for:
         ```
         {{ execution.result.output.beertab | to_yaml_string }}```
