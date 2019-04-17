@@ -4,20 +4,19 @@ from st2common.runners.base_action import Action
 
 class Modify(Action):
 
-    def run(self, beertab, person, user, operation):
+    def run(self, beertab, owner, operation, recipient):
         if not beertab:
             beertab = {}
 
         if operation == 'add':
-            beertab[person] = beertab.get(person, 0) + 1
+            beertab[recipient] = beertab.get(recipient, 0) + 1
         elif operation == 'remove':
-            if person in beertab:
-                if beertab[person] > 0:
-                    beertab[person] = beertab[person] - 1
-                else:
-                    raise ValueError("{} doesn't owe {} any beer".format(person, user))
+            if recipient in beertab:
+                beertab[recipient] = beertab[recipient] - 1
+                if beertab[recipient] <= 0:
+                    del beertab[recipient]
             else:
-                raise ValueError("{} doesn't have a beer tab open for {}".format(person, user))
+                raise ValueError("{} doesn't owe {} any beer".format(recipient, owner))
         else:
             raise RuntimeError("Unknown operation: {}".format(operation))
 

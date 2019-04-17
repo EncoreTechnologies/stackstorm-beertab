@@ -1,15 +1,12 @@
 ---
-description: "Adds a beer for recipient to the owners tab"
+description: "Get a beer tab for a particular owner"
 enabled: true
-entry_point: workflows/add.yaml
+entry_point: workflows/get.yaml
 pack: beertab
-name: add
+name: get
 runner_type: "orquesta"
 parameters:
   owner:
     type: string
     description: "Owner of the beer tab, person who owes you beer"
     default: "{{ action_context.api_user }}"
-  recipient:
-    type: string
-    description: "Person who is receiving the beer"

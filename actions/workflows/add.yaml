@@ -20,13 +20,6 @@ tasks:
           - kv_beertab: "{{ result().result }}"
         do:
           - add_beer_to_tab
-      # beer tab didn't exist in the k/v store, create a new one
-      - when: "{{ failed() }}"
-        publish:
-          - kv_beertab:
-              "{{ ctx().recipient }}": 0
-        do:
-          - add_beer_to_tab
               
   add_beer_to_tab:
     action: beertab.modify

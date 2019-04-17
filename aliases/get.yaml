@@ -1,0 +1,17 @@
+---
+pack: "beertab"
+name: "get"
+action_ref: "beertab.get"
+description: "Gets an owners beer tab"
+formats:
+    - "get beer tab for {{ owner }}"
+ack:
+    format: "One sec while I find their tab!"
+result:
+    format: |
+        Here is the tab you asked for:
+        ```
+        status: {{ execution.status }}
+        beer tab:
+        {{ execution.result.output.beertab | to_yaml_string | indent(4, first=True) }}
+        ```

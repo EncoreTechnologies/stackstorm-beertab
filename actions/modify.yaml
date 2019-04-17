@@ -9,16 +9,15 @@ parameters:
   beertab:
     type: object
     description: "Beer tab object"
-  person:
+  owner:
     type: string
-    description: "Person who owes you a beer"
-  user:
-    type: string
-    description: "Number of logs to pull"
-    default: "{{ action_context.api_user }}"
+    description: "Owner of the beer tab"
   operation:
     type: string
     enum:
       - add
       - remove
+  recipient:
+    type: string
+    description: "Person who is receiving a beer"
       
