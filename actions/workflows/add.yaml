@@ -18,7 +18,7 @@ tasks:
       - when: "{{ succeeded() }}"
         publish:
           - kv_beertab: "{{ result().result }}"
-        do:
+      - do:
           - add_beer_to_tab
               
   add_beer_to_tab:
