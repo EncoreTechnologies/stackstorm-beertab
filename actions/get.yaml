@@ -9,4 +9,4 @@ parameters:
   owner:
     type: string
     description: "Owner of the beer tab, person who owes you beer"
-    default: "{{ action_context.api_user }}"
+    default: "@{{ action_context.api_user }}"
