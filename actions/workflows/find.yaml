@@ -1,21 +1,29 @@
 version: 1.0
 
 input:
-  - owner
-
-vars:
-  - beertab: null
-  - key: "beertab.{{ ctx().owner }}"
+  - recipient
 
 tasks:
-  get_tab:
-    action: st2.kv.get_object
+  get_tabs:
+    action: st2.kv.grep
     input:
-      key: "{{ ctx().key }}"
+      query: "beertab."
     next:
       - when: "{{ succeeded() }}"
         publish:
-          - beertab: "{{ result().result }}"
+          - beertabs: "{{ result().result }}"
+        next:
+          - aggregate_tabs
+
+  aggregate_tabs:
+    action: beertab.aggregate
+    input:
+      beertabs: "{{ ctx().beertabs }}"
+      recipient: "{{ ctx().recipient }}"
+    next:
+      - when: "{{ succeeded() }}"
+        publish:
+          - beer_debt: "{{ result().result }}"
 
 output:
-  - beertab: "{{ ctx().beertab }}"
+  - beer_debt: "{{ ctx().beer_debt }}"
