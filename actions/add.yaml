@@ -1,15 +1,15 @@
 ---
-description: "Adds a beer to your tab"
+description: "Adds a beer to a tab"
 enabled: true
 entry_point: workflows/add.yaml
 pack: beertab
 name: add
 runner_type: "orquesta"
 parameters:
-  person:
+  recipient:
     type: string
-    description: "Person who owes you a beer"
-  user:
+    description: "Person who is receiving the beer"
+  owner:
     type: string
-    description: "Number of logs to pull"
+    description: "Owner of the beer tab, person who owes you beer"
     default: "{{ action_context.api_user }}"

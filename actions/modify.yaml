@@ -1,0 +1,24 @@
+---
+description: "Modifies a beer tab"
+enabled: true
+entry_point: modify.py
+pack: beertab
+name: modify
+runner_type: "python-script"
+parameters:
+  beertab:
+    type: object
+    description: "Beer tab object"
+  person:
+    type: string
+    description: "Person who owes you a beer"
+  user:
+    type: string
+    description: "Number of logs to pull"
+    default: "{{ action_context.api_user }}"
+  operation:
+    type: string
+    enum:
+      - add
+      - remove
+      

@@ -1,31 +1,52 @@
 version: 1.0
 
 input:
-  - person
-  - user
+  - recipient
+  - owner
+
+vars:
   - beertab: null
+  - key: "system.beertab.{{ ctx().owner }}"
 
 tasks:
   get_tab:
     action: st2.kv.get
     input:
-      key: "system.beertab.{{ ctx().user }}"
+      key: "{{ ctx().key }}"
     next:
       # beer tab was retrieved out of the key/value store
       - when: "{{ succeeded() }}"
         publish:
-          - beertab: "{{ result() }}"
-      # create beer tab if it doesn't exit
+          - kv_beertab: "{{ result().result }}"
+        do:
+          - add_beer_to_tab
+      # beer tab didn't exist in the k/v store, create a new one
       - when: "{{ failed() }}"
         publish:
-          - beertab:
-              "{{ ctx().person }}": 0
+          - kv_beertab:
+              "{{ ctx().recipient }}": 0
+        do:
+          - add_beer_to_tab
               
   add_beer_to_tab:
-    action: core.noop
+    action: beertab.modify
+    input:
+      beertab: "{{ ctx().kv_beertab }}"
+      recipient: "{{ ctx().recipient }}"
+      owner: "{{ ctx().owner }}"
+      operation: add
     next:
-      - publish:
-          - beertab: "{% set _x = (ctx().beertab[ctx().person] += 1) %}{{ ctx().beertab }}"
+      - when: "{{ succeeded() }}"
+        publish:
+          - beertab: "{{ result().result }}"
+        do:
+          - save_tab
+
+  save_tab:
+    action: st2.kv.set_object
+    input:
+      key: "{{ ctx().key }}"
+      value: "{{ ctx().beertab }}"
 
 output:
   - beertab: "{{ ctx().beertab }}"

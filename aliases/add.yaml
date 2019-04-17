@@ -2,22 +2,17 @@
 pack: "beertab"
 name: "add"
 action_ref: "beertab.add"
-description: "Adds a beer to your tab"
+description: "Adds a beer to a tab"
 formats:
-    - "add a beer to {{ person }} tab"
-    - "hey {{ person }} you owe me a beer"
+    - "add a beer for {{ recipient }} to {{ owner }} tab"
+    - "add a beer for {{ recipient }} to my tab"
 ack:
     format: "Adding a beer to their tab!"
 result:
     format: |
-        Received the following output from our mission:
+        Added a beer to their tab:
         ```
         status: {{ execution.status }}
-        result:
-        {% for res in execution.result.result %}
-        ----------------
-            host: {{ res.host }}
-            logs:
-                {{ res.result | replace('\\n', '\n') | indent(8)  }}
-        {% endfor %}
+        beer tab:
+        {{ execution.result.output.beertab | to_yaml_string | indent(4, first=True) }}
         ```
