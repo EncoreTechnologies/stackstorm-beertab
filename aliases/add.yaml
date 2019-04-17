@@ -10,9 +10,12 @@ ack:
     format: "Adding a beer to their tab!"
 result:
     format: |
-        {{ if execution.status == 'succeeded' }}
+        {% if execution.status == 'succeeded' %}
         Successfully added a beer for {{ execution.result.output.recipient }} to {{ execution.result.output.owner }}'s tab!
         Here's what {{ execution.result.output.owner }}'s beer tab looks like now:
         ```
         {{ execution.result.output.beertab | to_yaml_string | indent(4, first=True) }}
         ```
+        {% else %}
+        Failed to add a beer for {{ execution.result.output.recipient }} to {{ execution.result.output.owner }}'s tab!
+        {% endif %}
