@@ -8,7 +8,7 @@ runner_type: "python-script"
 parameters:
   beertabs:
     type: object
-    description: "Hash of beer tabs, key is the owner of the tab, value is the tab for that owner"
+    description: "Hash of beer tabs, key is the k/v store key with the, value is the tab for that owner"
   recipient:
     type: string
     description: "Person who is receiving a beer"
