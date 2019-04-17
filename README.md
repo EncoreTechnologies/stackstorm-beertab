@@ -73,6 +73,8 @@ Example:
 add a beer for @DaveSmith to @nmaludy tab
 ```
 
+![add_alias](./img/screenshot_add_alias.png)
+
 
 ### Removing a beer from a tab
 
@@ -88,6 +90,8 @@ Example, i was a nice guy and took Greg out for a beer:
 ```
 remove a beer for @Greg from my tab
 ```
+
+![remove_alias](./img/screenshot_remove_alias.png)
 
 ### Getting a beer tab
 
@@ -114,6 +118,8 @@ Example, check on someone else's tab:
 get beer tab for @DaveSmith
 ```
 
+![get_alias](./img/screenshot_get_alias.png)
+
 ### Finding all of the people who owe you a beer
 
 Last, but probably most important is determining,  across everyone's beer tab, who owes you beer.
@@ -137,3 +143,5 @@ Example, finding people who owes someone else beer:
 ```
 who owes @brad beer
 ```
+
+![find_alias](./img/screenshot_find_alias.png)

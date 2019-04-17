@@ -17,5 +17,5 @@ result:
         ```
         {{ execution.result.output.beer_debt | to_yaml_string }}```
         {% else %}
-        Failed to find any beers owed to {{ execution.parameters.recipient }}
+        Failed to find any beers owed to {{ execution.parameters.recipient | default('you') }}
         {% endif %}

@@ -14,9 +14,9 @@ ack:
 result:
     format: |
         {% if execution.status == 'succeeded' %}
-        Here is the tab for {{ execution.parameters.owner }} that you asked for:
+        Here is the tab for {{ execution.result.output.owner }} that you asked for:
         ```
         {{ execution.result.output.beertab | to_yaml_string }}```
         {% else %}
-        Failed to get the beer tab for {{ execution.parameters.owner }}
+        Failed to get the beer tab for {{ execution.parameters.owner | default('you') }}
         {% endif %}
