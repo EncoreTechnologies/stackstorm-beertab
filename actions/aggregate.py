@@ -14,7 +14,7 @@ class Aggregate(Action):
             if isinstance(tab, six.string_types):
                 tab = json.loads(tab)
 
-            owner = kv_key.replace('beertab.', 1)
+            owner = kv_key.replace('beertab.', '', 1)
             if recipient in tab:
                 result[owner] = tab[recipient]
 
