@@ -7,7 +7,7 @@ input:
 vars:
   - beertab: null
   - beertab_kv: null
-  - key: "system.beertab.{{ ctx().owner }}"
+  - key: "beertab.{{ ctx().owner }}"
 
 tasks:
   get_tab:

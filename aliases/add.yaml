@@ -4,8 +4,8 @@ name: "add"
 action_ref: "beertab.add"
 description: "Adds a beer to a tab"
 formats:
-    - "add a beer for {{ recipient }} to {{ owner }} tab"
     - "add a beer for {{ recipient }} to my tab"
+    - "add a beer for {{ recipient }} to {{ owner }} tab"
 ack:
     format: "Adding a beer to their tab!"
 result:
