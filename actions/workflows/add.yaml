@@ -47,3 +47,5 @@ tasks:
 
 output:
   - beertab: "{{ ctx().beertab }}"
+    recipient: "{{ ctx().recipient }}"
+    owner: "{{ ctx().owner }}"
