@@ -16,5 +16,5 @@ result:
         beer tab:
         {{ execution.result.output.beertab | to_yaml_string | indent(4, first=True) }}
         execution:
-        {{ execution | to_yaml_string | indent(4, first=True) }}
+        {{ execution.parameters.owner }}
         ```
