@@ -6,25 +6,29 @@ input:
 
 vars:
   - beertab: null
+  - beertab_kv: null
   - key: "system.beertab.{{ ctx().owner }}"
 
 tasks:
   get_tab:
-    action: st2.kv.get
+    action: st2.kv.get_object
     input:
       key: "{{ ctx().key }}"
     next:
       # beer tab was retrieved out of the key/value store
       - when: "{{ succeeded() }}"
         publish:
-          - kv_beertab: "{{ result().result }}"
-      - do:
+          - beertab_kv: "{{ result().result }}"
+        do:
+          - add_beer_to_tab
+      - when: "{{ failed() }}"
+        do:
           - add_beer_to_tab
               
   add_beer_to_tab:
     action: beertab.modify
     input:
-      beertab: "{{ ctx().kv_beertab }}"
+      beertab: "{{ ctx().beertab_kv }}"
       recipient: "{{ ctx().recipient }}"
       owner: "{{ ctx().owner }}"
       operation: add
