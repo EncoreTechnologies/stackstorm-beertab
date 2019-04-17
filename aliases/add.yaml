@@ -14,8 +14,7 @@ result:
         Successfully added a beer for {{ execution.result.output.recipient }} to {{ execution.result.output.owner }}'s tab!
         Here's what {{ execution.result.output.owner }}'s beer tab looks like now:
         ```
-        {{ execution.result.output.beertab | to_yaml_string}}
-        ```
+        {{ execution.result.output.beertab | to_yaml_string}}```
         {% else %}
         Failed to add a beer for {{ execution.result.output.recipient }} to {{ execution.result.output.owner }}'s tab!
         {% endif %}

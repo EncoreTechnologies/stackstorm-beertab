@@ -1,0 +1,21 @@
+---
+pack: "beertab"
+name: "find"
+action_ref: "beertab.find"
+description: "Find all people who owe you beer"
+formats:
+    - "who owes me beer"
+    - "who owes me beer?"
+    - "find who owes me beer"
+    - "find who owes {{ recipient }} beer"
+ack:
+    format: "Standby, going through everyones tab to find the drinks that are rightfully yours."
+result:
+    format: |
+        {% if excution.status == 'succeeded' %}
+        Here are all if the people who owe you a beer:
+        ```
+        {{ execution.result.output.beer_debt | to_yaml_string }}```
+        {% else %}
+        Failed to find any beers owed to {{ execution.parameters.recipient }}
+        {% endif %}

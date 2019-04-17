@@ -1,0 +1,21 @@
+version: 1.0
+
+input:
+  - owner
+
+vars:
+  - beertab: null
+  - key: "beertab.{{ ctx().owner }}"
+
+tasks:
+  get_tab:
+    action: st2.kv.get_object
+    input:
+      key: "{{ ctx().key }}"
+    next:
+      - when: "{{ succeeded() }}"
+        publish:
+          - beertab: "{{ result().result }}"
+
+output:
+  - beertab: "{{ ctx().beertab }}"

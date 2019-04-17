@@ -9,9 +9,10 @@ ack:
     format: "One sec while I find their tab!"
 result:
     format: |
-        Here is the tab you asked for:
+        {% if excution.status == 'succeeded' %}
+        Here is the tab for {{ execution.parameters.owner }} that you asked for:
         ```
-        status: {{ execution.status }}
-        beer tab:
-        {{ execution.result.output.beertab | to_yaml_string | indent(4, first=True) }}
-        ```
+        {{ execution.result.output.beertab | to_yaml_string }}```
+        {% else %}
+        Failed to get the beer tab for {{ execution.parameters.owner }}
+        {% endif %}
