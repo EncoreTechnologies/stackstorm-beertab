@@ -5,9 +5,10 @@ input:
 
 tasks:
   get_tabs:
-    action: st2.kv.grep
+    action: st2.kv.grep_object
     input:
       query: "beertab."
+      prefix: true
     next:
       - when: "{{ succeeded() }}"
         publish:

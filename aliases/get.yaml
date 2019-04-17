@@ -4,6 +4,10 @@ name: "get"
 action_ref: "beertab.get"
 description: "Gets an owners beer tab"
 formats:
+    - "get my beer tab"
+    - "get {{ owner }} beer tab"
+    - "get beer tab"
+    - "get beer tab for me"
     - "get beer tab for {{ owner }}"
 ack:
     format: "One sec while I find their tab!"

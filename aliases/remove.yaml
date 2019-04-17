@@ -1,0 +1,20 @@
+---
+pack: "beertab"
+name: "remove"
+action_ref: "beertab.remove"
+description: "Removes a beer from a tab"
+formats:
+    - "remove a beer for {{ recipient }} from my tab"
+    - "remove a beer for {{ recipient }} from {{ owner }} tab"
+ack:
+    format: "Removing a beer from their tab!"
+result:
+    format: |
+        {% if execution.status == 'succeeded' %}
+        Successfully removed a beer for {{ execution.result.output.recipient }} from {{ execution.result.output.owner }}'s tab!
+        Here's what {{ execution.result.output.owner }}'s beer tab looks like now:
+        ```
+        {{ execution.result.output.beertab | to_yaml_string}}```
+        {% else %}
+        Failed to remove a beer for {{ execution.result.output.recipient }} from {{ execution.result.output.owner }}'s tab!
+        {% endif %}

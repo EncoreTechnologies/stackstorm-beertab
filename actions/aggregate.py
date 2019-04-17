@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from st2common.runners.base_action import Action
-import json
 import six
 
 
@@ -11,9 +10,6 @@ class Aggregate(Action):
         # find all of the tabs with recipient in them and gather them up into
         # one dict keyed on the owner who owes the beer
         for kv_key, tab in six.iteritems(beertabs):
-            if isinstance(tab, six.string_types):
-                tab = json.loads(tab)
-
             owner = kv_key.replace('beertab.', '', 1)
             if recipient in tab:
                 result[owner] = tab[recipient]

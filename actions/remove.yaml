@@ -1,9 +1,9 @@
 ---
-description: "Adds a beer for recipient to the owners tab"
+description: "Removes a beer for recipient from the owners tab"
 enabled: true
 entry_point: workflows/modify_operation.yaml
 pack: beertab
-name: add
+name: remove
 runner_type: "orquesta"
 parameters:
   owner:
@@ -15,5 +15,5 @@ parameters:
     description: "Person who is receiving the beer"
   operation:
     type: string
-    default: add
+    default: remove
     immutable: true
