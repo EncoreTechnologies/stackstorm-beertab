@@ -12,7 +12,7 @@ tasks:
       - when: "{{ succeeded() }}"
         publish:
           - beertabs: "{{ result().result }}"
-        next:
+        do:
           - aggregate_tabs
 
   aggregate_tabs:
