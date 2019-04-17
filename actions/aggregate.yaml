@@ -1,9 +1,9 @@
 ---
 description: "Aggregates beer tab data"
 enabled: true
-entry_point: modify.py
+entry_point: aggregate.py
 pack: beertab
-name: modify
+name: aggregate
 runner_type: "python-script"
 parameters:
   beertabs:
